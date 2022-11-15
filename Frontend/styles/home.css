@@ -4,6 +4,12 @@ body
    padding: 0; 
 }  
 
+.large-container {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: auto auto;
@@ -11,12 +17,6 @@ body
     background-color: rgba(255, 255, 255, 0.8);
     padding: 50px;
   }
-
-.large-container {
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-}
 
 .item1 {
     background-color: rgba(255, 255, 255, 0.8);
