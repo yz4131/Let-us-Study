@@ -34,4 +34,6 @@ button[0].addEventListener('click', async _ => {
     })
     .catch((error) => console.error("FETCH ERROR:", error));    
 
+    successHandler()
+
 });
