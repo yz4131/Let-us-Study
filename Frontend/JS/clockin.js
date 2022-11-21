@@ -21,7 +21,7 @@ button[0].addEventListener('click', async _ => {
         return response.json();
     } else {
         console.log(response);
-        console.log("error")
+        console.log("error");
         errorHandler("Server Error");
         }
     })

@@ -26,14 +26,14 @@ button[0].addEventListener('click', async _ => {
             return response.json();
         } else {
             console.log(response);
-            console.log("error")
+            console.log("error");
             errorHandler("Server Error");
             }
         })
         .then((data) => {
             console.log(data);
             if (data === "success") {
-                successHandler()
+                successHandler();
             }
             else if (data==="Already exist") {
                 errorHandler("User ID Already Exists");
@@ -43,7 +43,7 @@ button[0].addEventListener('click', async _ => {
             }
         })
         .catch((error) => {
-            console.error("FETCH ERROR:", error)
+            console.error("FETCH ERROR:", error);
             errorHandler("Server Error");
         });   
     }
