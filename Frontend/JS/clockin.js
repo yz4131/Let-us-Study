@@ -36,6 +36,9 @@ button[0].addEventListener('click', async _ => {
         else if (data==="already entered, please log off first") {
             errorHandler("You Have Already Entered A Library, Clock Out First");
         }
+        else if (data==="Cannot get information") {
+            errorHandler("It Seems Like You Don't Have An Account");
+        }
         else {
             errorHandler("Server Error");
         }

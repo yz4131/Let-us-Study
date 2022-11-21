@@ -35,6 +35,9 @@ button[0].addEventListener('click', async _ => {
         else if (data==="User hasn't enter any library") {
             errorHandler("You Haven't Entered Any Libraries");
         }
+        else if (data==="Cannot get information") {
+            errorHandler("It Seems Like You Don't Have An Account");
+        }
         else {
             errorHandler("Server Error");
         }
