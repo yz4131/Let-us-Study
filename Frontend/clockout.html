@@ -27,16 +27,16 @@
                         <hr>
                         <div>
                             <label for="uid"><b>Student ID</b></label>
-                            <input type="text" placeholder="Enter Student ID" name="uid"></input>
+                            <input type="text" placeholder="Enter Student ID" name="uid" id="uid"></input>
                         </div>
                         <div>
                             <label for="psw"><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password"></input>
+                            <input type="password" placeholder="Enter Password" id="psw"></input>
                         </div>
                         <div>
                             <p class="errorMsg"> &nbsp </p>
                         </div>
-                        <button type="submit" class="registerbtn">Leave Library</button>
+                        <button type="button" class="out_btn">Leave Library</button>
                     </form>
                 </div>
             </div>
@@ -52,8 +52,9 @@
                     <div style="background-image: url('./assets/stairs.png');"></div>
                 </div>
             </div>
-
         </div>
+        <script src="./JS/clockout.js"></script>
+        <script src="./JS/Handler.js"></script>
     </body>
     <footer>
         <p>Author: Yuqin Zhao and Yutong Chen</p>

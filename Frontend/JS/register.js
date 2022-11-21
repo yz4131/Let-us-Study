@@ -35,8 +35,11 @@ button[0].addEventListener('click', async _ => {
             if (data === "success") {
                 successHandler()
             }
-            else {
+            else if (data==="Already exist") {
                 errorHandler("User ID Already Exists");
+            }
+            else {
+                errorHandler("Server Error");
             }
         })
         .catch((error) => {
