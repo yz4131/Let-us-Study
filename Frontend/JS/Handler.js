@@ -1,6 +1,6 @@
-function errorHandler() {
+function errorHandler(msg) {
     const errorMsg = document.getElementsByClassName("errorMsg");
-    errorMsg[0].innerHTML = "Invalid Number";
+    errorMsg[0].innerHTML = msg;
     errorMsg[0].style.color = "red";
 }
 

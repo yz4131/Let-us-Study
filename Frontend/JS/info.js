@@ -20,9 +20,10 @@ button[0].addEventListener('click', async _ => {
     } else {
         console.log(response);
         console.log("error")
+        errorHandler("Server Error");
         }
     })
-    .then(data => {
+    .then((data) => {
         console.log(data);
 
         deleteOldRes()
@@ -31,9 +32,11 @@ button[0].addEventListener('click', async _ => {
             let obj = data[i];
             buildRes(obj);
         }
+        successHandler()
     })
-    .catch((error) => console.error("FETCH ERROR:", error));    
-
-    successHandler()
+    .catch((error) => {
+        console.error("FETCH ERROR:", error)
+        errorHandler("Server Error");
+    });   
 
 });
