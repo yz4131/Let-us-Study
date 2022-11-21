@@ -19,20 +19,20 @@ button[0].addEventListener('click', async _ => {
         return response.json();
     } else {
         console.log(response);
-        console.log("error")
+        console.log("error");
         errorHandler("Server Error");
         }
     })
     .then((data) => {
         console.log(data);
 
-        deleteOldRes()
+        deleteOldRes();
 
         for (let i=0; i<data.length; i++){
             let obj = data[i];
             buildRes(obj);
         }
-        successHandler()
+        successHandler();
     })
     .catch((error) => {
         console.error("FETCH ERROR:", error)
