@@ -7,15 +7,18 @@ dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('CountingBoard')
 user_table = dynamodb.Table('user')
 
-
+#set cantain all the library's name
 lib_name = {'bl', 'aanfal', 'bcl', 'bnel', 'eal', 'hsl', 'jl', 'll', 'sipa', 'ml', 'mal', 'sel', 'tc'}
 
+
+#class for data format
 class DecimalEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, Decimal):
             return str(obj)
         return json.JSONEncoder.default(self, obj)
 
+#init function to set the initial data for each library
 def init(bl, aanfal, bcl, bnel, eal, hsl, jl, ll, sipa, ml, mal, sel, tc):
     lib = [bl, aanfal, bcl, bnel, eal, hsl, jl, ll, sipa, ml, mal, sel, tc]
     lib_name = ['bl', 'aanfal', 'bcl', 'bnel', 'eal', 'hsl', 'jl', 'll', 'sipa', 'ml', 'mal', 'sel', 'tc']
@@ -29,7 +32,8 @@ def init(bl, aanfal, bcl, bnel, eal, hsl, jl, ll, sipa, ml, mal, sel, tc):
             })
 
     return res 
-    
+
+#clear all data for each library at the begining of each semester  
 def clear():
     scan = table.scan(
     ProjectionExpression='#k',
@@ -43,12 +47,10 @@ def clear():
         for each in scan['Items']:
             batch.delete_item(Key=each)
 
-# table.update_item(
-#     Key={'pkey': 'asdf12345'},
-#     AttributeUpdates={
-#         'status': 'complete',
-#     },
-# )
+
+#enter function.
+#when a user enter a library, the function will store the user information in the user database and update the empty spot in related library
+#this function will check if the library has empty spot remaining.
 def enter(name, user_id, pwd):
     if name not in lib_name:
         return "Not a valid name"
@@ -107,7 +109,12 @@ def enter(name, user_id, pwd):
             ReturnValues="UPDATED_NEW"
             )
         return 'success'
-    
+
+
+#leave function.
+#the function will interact with users when they are leaving.
+#the function will query the user database to see if a user entered a library
+#after that the function will update the empty spot for each library
 def leave(id, pwd):
     data = user_table.query(
         KeyConditionExpression = Key('user_id').eq(id)
@@ -172,7 +179,7 @@ def leave(id, pwd):
     
     
     
-
+#get all data from library database
 def get_all():
     lib_name = ['bl', 'aanfal', 'bcl', 'bnel', 'eal', 'hsl', 'jl', 'll', 'sipa', 'ml', 'mal', 'sel', 'tc']
     res = {}
@@ -182,13 +189,15 @@ def get_all():
     return res
         
 
+#get data from library database based on library's name
 def get_by_name(name):
     res = table.query(
         KeyConditionExpression = Key('name').eq(name)
         )
     #print(res['Items'][0]['capacity'])
     return res['Items']
-    
+
+#query the data based on empty spot
 def get_by_sort(val):
     res = table.scan(
         FilterExpression = Key('empty').gt(val)
