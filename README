@@ -1,1 +1,3 @@
-We are implementing a real-time library user counting board. The counting will increase or decrease whenever the user enters or leaves the library. The counting board will also show the ranking of empty spots and give users some recommendations based on the user's need and empty spot, helping users to easily find a great library to study. Everyday when the library closes, countingboard will restart.
+We are implementing a real-time library user counting board. 
+
+The counting will increase or decrease whenever the user enters or leaves the library. The counting board will also show the ranking of empty spots and give users some recommendations based on the user's need and empty spot, helping users to easily find a great library to study. Everyday when the library closes, countingboard will restart.
