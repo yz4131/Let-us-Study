@@ -2,6 +2,8 @@ import json, boto3
 from boto3.dynamodb.conditions import Key
 from decimal import *
 
+#user lambda function for user to registe
+
 dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('user')
 
